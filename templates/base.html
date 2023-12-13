@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+body {
+  margin: 0;
+  font-size: 28px;
+    font-family: Arial, sans-serif; /* Add this line */
+
+}
+
+.header {
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  background-color: #333;
+  padding: 0 16px;
+}
+
+.navbar a {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.navbar input[type="text"] {
+  margin-left: 20px;
+  padding: 6px;
+  border: none;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.center {
+  flex-grow: 1;
+  text-align: center;
+}
+
+/* Add this class */
+.margin-right {
+  margin-right: 20px;
+}
+/* Add these styles */
+.sidebar {
+  position: fixed;
+  height: 100%;
+  width: 200px;
+  background-color: #f1f1f1;
+  padding: 20px;
+  overflow: auto;
+  /* Add this line */
+  margin-top: 60px; /* Adjust this value based on the height of your navbar */
+}
+
+.sidebar div {
+  border-left: 4px solid transparent;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.sidebar div.active {
+  border-left: 4px solid blue;
+}
+</style>
+    <title>Math Genius</title>
+</head>
+<body>
+    <div id="navbar" class="navbar">
+  <a href="#courses">Courses</a>
+        <div class="center"><a href="/">Math Genius</a></div>
+  <a href="#get-help">Get Help</a>
+  <a class="margin-right" href="#account">Account</a> <!-- Add the class here -->
+</div>
+    <!-- Add this sidebar -->
+    {% block sidebar %}
+<div class="sidebar">
+  <div class="active">
+    <span>Unit 1</span>
+    <span>Intro to multiplication</span>
+  </div>
+  <div>
+    <span>Unit 2</span>
+    <span>Intro to division</span>
+  </div>
+  <div>
+    <span>Unit 3</span>
+    <span>Intro to addition</span>
+  </div>
+  <div>
+    <span>Unit 4</span>
+    <span>Intro to subtraction</span>
+  </div>
+  <div>
+    <span>Unit 5</span>
+    <span>Intro to fractions</span>
+  </div>
+  <div>
+    <span>Unit 6</span>
+    <span>Intro to decimals</span>
+  </div>
+</div>
+    {% endblock %}
+    {% block content %}
+<!-- This is where the content from child templates will go -->
+{% endblock %}
+
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
+
+</body>
+</html>

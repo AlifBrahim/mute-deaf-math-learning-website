@@ -7,7 +7,7 @@
         .lesson {
         width: 80%;
             font-family: Arial, sans-serif;
-          padding-top: 60px; /* Adjust this value based on the height of your navbar */            /* Adjust these values */
+          padding-top: 70px; /* Adjust this value based on the height of your navbar */            /* Adjust these values */
             margin: auto auto auto 270px; /* Increase the left margin by the width of your sidebar */
             }
         .video {
@@ -61,6 +61,10 @@
             <!-- You might use a third-party comments plugin here, or build your own comments system -->
         </div>
     </div>
-</body>
+    {% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}
+
+</body>
 ```

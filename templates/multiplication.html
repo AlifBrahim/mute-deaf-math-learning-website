@@ -7,7 +7,7 @@
         .lesson {
         width: 80%;
             font-family: Arial, sans-serif;
-          padding-top: 70px; /* Adjust this value based on the height of your navbar */            /* Adjust these values */
+          padding-top: 60px; /* Adjust this value based on the height of your navbar */            /* Adjust these values */
             margin: auto auto auto 270px; /* Increase the left margin by the width of your sidebar */
             }
         .video {
@@ -24,10 +24,13 @@
         .comments {
             margin-top: 20px;
         }
+
     </style>
+     <head>
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
+    </head>
 <body>
-    {% block sidebar %}
-<div class="sidebar">
+<div class="sidebar" >
   <div class="active">
     <span>Equal groups</span>
   </div>
@@ -47,13 +50,12 @@
     <span>Relate repeated addition to multiplication (Not started)</span>
   </div>
 </div>
-{% endblock %}
     <div class="lesson">
         <h1>Multiplication as equal groups</h1>
 
         <div class="video">
             <!-- Replace 'VIDEO_ID' with your YouTube video's ID -->
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="comments">

@@ -12,6 +12,17 @@ def hello_world():
 def multiplication():
     return render_template('multiplication.html', title='Multiplication')
 
+@app.route('/login')
+def login():
+    return render_template('login.html', title='Login')
+
+@app.route('/create-account')
+def create_account():
+    return render_template('create-account.html', title='Create Account')
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html', title='Profile')
 
 @app.route('/darab-2-digit')
 def darab2digit():

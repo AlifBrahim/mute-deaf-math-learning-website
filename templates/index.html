@@ -59,30 +59,42 @@
     </head>
 <body>
 <div class="sidebar">
-  <div class="active">
-    <span>Unit 1</span>
-    <span>Intro to multiplication</span>
+  <div onclick="toggleTopics(this)">
+    <span>Darab<span class="arrow">▼</span></span>
+    <span class="topic">Darab 2 Digit</span>
+          <span class="topic">Darab 3 Digit</span>
+            <span class="topic">Darab dengan Titik Perpuluhan</span>
+              <span class="topic">Darab dalam Kehidupan Seharian</span>
+                <span class="topic">Penyelesaian Masalah</span>
   </div>
-  <div>
-    <span>Unit 2</span>
-    <span>Intro to division</span>
-  </div>
-  <div>
-    <span>Unit 3</span>
-    <span>Intro to addition</span>
-  </div>
-  <div>
-    <span>Unit 4</span>
-    <span>Intro to subtraction</span>
-  </div>
-  <div>
-    <span>Unit 5</span>
-    <span>Intro to fractions</span>
-  </div>
-  <div>
-    <span>Unit 6</span>
-    <span>Intro to decimals</span>
-  </div>
+    <div onclick="toggleTopics(this)">
+        <span>Bahagi<span class="arrow">▼</span></span>
+        <span class="topic">Bahagi 2 Digit</span>
+            <span class="topic">Bahagi 4 Digit</span>
+                <span class="topic">Bahagi dengan Titik Perpuluhan</span>
+                <span class="topic">Bahagi dalam Kehidupan Seharian</span>
+                    <span class="topic">Penyelesaian Masalah</span>
+    </div>
+    <div onclick="toggleTopics(this)">
+        <span>Matematik Pengguna: Simpanan dan Pelaburan<span class="arrow">▼</span></span>
+        <span class="topic">Simpanan dan Pelaburan</span>
+            <span class="topic">Faedah Mudah</span>
+                <span class="topic">Faedah Kompaun</span>
+                <span class="topic">Nilai Pemulangan Pelaburan (ROI)</span>
+                    <span class="topic">Amanah Saham</span>
+                        <span class="topic">Penyelesaian Masalah Simpanan</span>
+    </div>
+    <div onclick="toggleTopics(this)">
+        <span>Matematik Pengguna: Pengurusan Kredit dan Hutang<span class="arrow">▼</span></span>
+        <span class="topic">Apakah itu Kredit & Hutang?</span>
+            <span class="topic">Pengiraan Kredit</span>
+                <span class="topic">Penyelesaian Masalah Kredit</span>
+                <span class="topic">Faedah Sama Rata</span>
+                    <span class="topic">Faedah Atas Baki</span>
+                        <span class="topic">Penyelesaian Masalah Pinjaman</span>
+    </div>
+
+
 </div>
 
 <div class="curriculum">
@@ -110,7 +122,7 @@
         <h4>Bahagi</h4>
         <p>800/1600 Mastery points</p>
         <ul>
-            <li>Bahagi Cara Standard (2 Digit)</li>
+            <li><a href="/bahagi-2-digit">Bahagi Cara Standard (2 Digit)</a></li>
             <li>Bahagi Cara Standard (4 Digit)</li>
             <li>Bahagi dengan Titik Perpuluhan</li>
             <li>Bahagi dalam Kehidupan Seharian</li>

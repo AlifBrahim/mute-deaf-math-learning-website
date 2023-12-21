@@ -15,11 +15,38 @@ document.addEventListener("DOMContentLoaded", function() {
         if (window.pageYOffset >= sticky) {
             console.log('Adding sticky class to navbar');
             navbar.classList.add("sticky");
-            sidebar.style.top = "50px"; /* Move the sidebar down */
+            if (sidebar) { /* Check if sidebar exists */
+                sidebar.style.top = "50px"; /* Move the sidebar down */
+            }
         } else {
             console.log('Removing sticky class from navbar');
             navbar.classList.remove("sticky");
-            sidebar.style.top = "0"; /* Move the sidebar up */
+            if (sidebar) { /* Check if sidebar exists */
+                sidebar.style.top = "0"; /* Move the sidebar up */
+            }
         }
     }
+
 });
+function toggleTopics(unit) {
+  var topics = unit.getElementsByClassName('topic');
+  var topicsVisible = false;
+  for (var i = 0; i < topics.length; i++) {
+    var display = topics[i].style.display;
+    topics[i].style.display = display === 'none' ? 'block' : 'none';
+    if (topics[i].style.display !== 'none') {
+      topicsVisible = true;
+    }
+  }
+  // Remove 'active' class from all topics
+  var allTopics = document.getElementsByClassName('topic');
+  for (var i = 0; i < allTopics.length; i++) {
+    allTopics[i].classList.remove('active');
+  }
+  // Add 'active' class to the clicked topic only if its topics are visible
+  if (topicsVisible) {
+    topics[0].classList.add('active');
+  }
+}
+
+

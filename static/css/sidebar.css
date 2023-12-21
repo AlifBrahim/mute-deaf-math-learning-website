@@ -15,11 +15,31 @@
   border-left: 4px solid transparent;
   padding: 10px;
   margin-bottom: 10px;
+    cursor: pointer;
 }
 
-.sidebar div.active {
+.sidebar span.topic.active {
   border-left: 4px solid blue;
+  padding: 5px;
 }
 .sidebar div:hover {
   background-color: #ddd; /* Light grey color when hover a list */
+}
+
+.sidebar span.topic {
+  display: none;
+  margin-left: 20px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+    border-top: 1px solid gray; /* Add a separator */
+}
+
+.sidebar span.arrow {
+  float: right;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.sidebar div.active span.arrow {
+  transform: rotate(180deg);
 }

@@ -15,7 +15,6 @@
   border-left: 4px solid transparent;
   padding: 10px;
   margin-bottom: 10px;
-    cursor: pointer;
 }
 
 .sidebar span.topic.active {
@@ -27,6 +26,7 @@
 }
 
 .sidebar span.topic {
+      cursor: pointer;
   display: none;
   margin-left: 20px;
   margin-top: 10px;

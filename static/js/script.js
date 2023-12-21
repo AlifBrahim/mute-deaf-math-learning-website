@@ -27,8 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-});
-function toggleTopics(unit) {
+});function toggleTopics(unit) {
   var topics = unit.getElementsByClassName('topic');
   var topicsVisible = false;
   for (var i = 0; i < topics.length; i++) {
@@ -38,14 +37,14 @@ function toggleTopics(unit) {
       topicsVisible = true;
     }
   }
-  // Remove 'active' class from all topics
-  var allTopics = document.getElementsByClassName('topic');
-  for (var i = 0; i < allTopics.length; i++) {
-    allTopics[i].classList.remove('active');
+  // Remove 'active' class from all divs
+  var allDivs = document.getElementsByClassName('sidebar')[0].getElementsByTagName('div');
+  for (var i = 0; i < allDivs.length; i++) {
+    allDivs[i].classList.remove('active');
   }
-  // Add 'active' class to the clicked topic only if its topics are visible
+  // Add 'active' class to the clicked div only if its topics are visible
   if (topicsVisible) {
-    topics[0].classList.add('active');
+    unit.classList.add('active');
   }
 }
 

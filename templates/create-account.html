@@ -13,15 +13,12 @@
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
 
 
-{#    <link rel="stylesheet" href="css/owl.carousel.min.css">#}
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
 
     <!-- Bootstrap CSS -->
-{#    <link rel="stylesheet" href="css/bootstrap.min.css">#}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 
     <!-- Style -->
-{#    <link rel="stylesheet" href="css/style.css">#}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
 
     <title>Login</title>
@@ -41,24 +38,24 @@
               <h3>Sign Up</h3>
               <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
               </div>
-              <form action="#" method="post">
-                  <div class="form-group first">
-                  <label for="username">Full Name</label>
-                  <input type="text" class="form-control" placeholder="Enter your full name" id="username">
-                </div>
-                <div class="form-group first">
-                  <label for="username">Username</label>
-                  <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
-                </div>
+                <form action="{{ url_for('create_account') }}" method="post">
+    <div class="form-group first">
+        <label for="fullname">Full Name</label>
+        <input type="text" class="form-control" placeholder="Enter your full name" id="fullname" name="fullname">
+    </div>
+    <div class="form-group first">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username" name="username">
+    </div>
 
-                <div class="form-group last mb-3">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" placeholder="Your Password" id="password">
-                </div>
+    <div class="form-group last mb-3">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" placeholder="Your Password" id="password" name="password">
+    </div>
 
-                <input type="submit" value="Sign Up" class="btn btn-block btn-primary">
-
-              </form>
+    <input type="submit" value="Sign Up" class="btn btn-block btn-primary">
+</form>
+                <p>Already have an account? <a href="{{ url_for('login') }}">Log In</a></p>
             </div>
           </div>
         </div>
@@ -69,18 +66,12 @@
   </div>
 
 
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
 
-{#    <script src="js/jquery-3.3.1.min.js"></script>#}
-    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
-
-{#    <script src="js/popper.min.js"></script>#}
     <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
-{#    <script src="js/bootstrap.min.js"></script>#}
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-{#    <script src="js/main.js"></script>#}
     <script src="{{ url_for('static', filename='js/login.js') }}"></script>
   </body>
-{#</html>#}
 
     {% endblock %}
     ```

@@ -1,6 +1,44 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, request
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from werkzeug.security import generate_password_hash, check_password_hash
+import pymysql
+pymysql.install_as_MySQLdb()
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = '8b4fTgOZ9fRpv6F0TP970kdE8XJvF0Ly'
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://doadmin:AVNS_7KPMC3xu3yCp_jz_WfT@uumevents-do-user-14295301-0.b.db.ondigitalocean.com:25060/mathgenius'
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+
+class User(UserMixin, db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), unique=True, index=True)
+    password_hash = db.Column(db.String(512))
+    fullname = db.Column(db.String(256))  # Add this line
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 @app.route('/')
@@ -12,17 +50,53 @@ def hello_world():
 def multiplication():
     return render_template('multiplication.html', title='Multiplication')
 
-@app.route('/login')
-def login():
-    return render_template('login.html', title='Login')
 
-@app.route('/create-account')
+@app.route('/create-account', methods=['GET', 'POST'])
 def create_account():
+    if request.method == 'POST':
+        fullname = request.form['fullname']
+        username = request.form['username']
+        password = request.form['password']
+        # Create a new instance of the User class
+        user = User(username=username, fullname=fullname)
+        user.set_password(password)
+        # Add the new user to the database
+        db.session.add(user)
+        db.session.commit()
+        # Log the user in after registering
+        login_user(user)
+        return redirect(url_for('profile'))
     return render_template('create-account.html', title='Create Account')
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        user = User.query.filter_by(username=username).first()
+        if user is None or not user.check_password(password):
+            error = 'Invalid username or password. Please try again.'
+        else:
+            login_user(user)
+            return redirect(url_for('profile'))
+    return render_template('login.html', title='Login', error=error)
+
+
+
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
 @app.route('/profile')
+@login_required
 def profile():
     return render_template('profile.html', title='Profile')
+
 
 @app.route('/darab-2-digit')
 def darab2digit():

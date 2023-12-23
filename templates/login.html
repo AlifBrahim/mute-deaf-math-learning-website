@@ -1,27 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-
-{#<!doctype html>#}
-{#<html lang="en">#}
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-{#    <link rel="stylesheet" href="fonts/icomoon/style.css">#}
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
 
-
-{#    <link rel="stylesheet" href="css/owl.carousel.min.css">#}
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
 
     <!-- Bootstrap CSS -->
-{#    <link rel="stylesheet" href="css/bootstrap.min.css">#}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 
     <!-- Style -->
-{#    <link rel="stylesheet" href="css/style.css">#}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
 
     <title>Login</title>
@@ -39,16 +31,20 @@
             <div class="form-block">
               <div class="text-center mb-5">
               <h3>Login</h3>
-              <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
+                    <!-- Display the error message -->
+        {% if error %}
+            <p class="alert alert-danger">{{ error }}</p>
+        {% endif %}
+
               </div>
-              <form action="#" method="post">
+            <form action="{{ url_for('login') }}" method="post">
                 <div class="form-group first">
                   <label for="username">Username</label>
-                  <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
+                  <input name="username" type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
                 </div>
                 <div class="form-group last mb-3">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" placeholder="Your Password" id="password">
+                  <input name="password" type="password" class="form-control" placeholder="Your Password" id="password">
                 </div>
 
                 <div class="d-sm-flex mb-5 align-items-center">
@@ -74,18 +70,12 @@
   </div>
 
 
+   <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
 
-{#    <script src="js/jquery-3.3.1.min.js"></script>#}
-    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
-
-{#    <script src="js/popper.min.js"></script>#}
     <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
-{#    <script src="js/bootstrap.min.js"></script>#}
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-{#    <script src="js/main.js"></script>#}
     <script src="{{ url_for('static', filename='js/login.js') }}"></script>
   </body>
-{#</html>#}
 
     {% endblock %}
     ```

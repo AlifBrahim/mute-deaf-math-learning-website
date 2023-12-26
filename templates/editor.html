@@ -13,46 +13,56 @@ tinymce.init({
   setup: function (editor) {
     editor.ui.registry.addButton('mySaveButton', {
       text: 'Save',
-     onAction: function () {
+    onAction: function () {
     var content = tinymce.get('mytextarea').getContent();
     // Replace 'content' in the 'savedContent' div
     $('#savedContent').html(content);
-       // Send 'content' and page name to server to save
+    // Change the cursor to a loading spinner
+    $('body').css('cursor', 'wait');
+    // Send 'content' and page name to server to save
     $.ajax({
-    url: '/save-content',
-    method: 'POST',
-    data: { content: content, page: '{{ page }}' },
-    success: function(response) {
-        console.log('Success:', response);
-    },
-    error: function(error) {
-        console.log('Error:', error);
-    }
-});
-
-
+        url: '/save-content',
+        method: 'POST',
+        data: { content: content, page: '{{ page }}' },
+        success: function(response) {
+            console.log('Success:', response);
+            // Change the cursor back to default
+            $('body').css('cursor', 'default');
+        },
+        error: function(error) {
+            console.log('Error:', error);
+            // Change the cursor back to default
+            $('body').css('cursor', 'default');
+        }
+    });
 }
 
 
     });
-    editor.on('change', function (e) {
-        e.preventDefault(); // Prevent the default form submission
-        editor.save();
-        var content = editor.getContent(); // Get editor content
-        // Send 'content' to server to save
-       $.ajax({
-    url: '/save-content',
-    method: 'POST',
-    data: { content: content, page: '{{ page }}' },
-    success: function(response) {
-        console.log('Success:', response);
-    },
-    error: function(error) {
-        console.log('Error:', error);
-    }
-});
-
+   // Do the same for the 'change' event handler
+editor.on('change', function (e) {
+    e.preventDefault(); // Prevent the default form submission
+    editor.save();
+    var content = editor.getContent(); // Get editor content
+    // Change the cursor to a loading spinner
+    $('body').css('cursor', 'wait');
+    // Send 'content' to server to save
+    $.ajax({
+        url: '/save-content',
+        method: 'POST',
+        data: { content: content, page: '{{ page }}' },
+        success: function(response) {
+            console.log('Success:', response);
+            // Change the cursor back to default
+            $('body').css('cursor', 'default');
+        },
+        error: function(error) {
+            console.log('Error:', error);
+            // Change the cursor back to default
+            $('body').css('cursor', 'default');
+        }
     });
+});
   }
 });
 </script>

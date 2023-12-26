@@ -1,93 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <style>
-     .center-text {
-        text-align: center;
-    }
-        .lesson {
-        width: 70%;
-            font-family: Arial, sans-serif;
-          padding-top: 60px; /* Adjust this value based on the height of your navbar */            /* Adjust these values */
-            margin: auto auto auto 270px; /* Increase the left margin by the width of your sidebar */
-            }
-        .video {
-            text-align: center;
-        }
-                .comments {
-            margin-top: 20px;
-        }
-
-    </style>
-     <head>
-     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lesson.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
     </head>
-
-<body>
+    <body>
     {% include 'darab/sidebar.html' %}
-
-{#     <script src="https://cdn.tiny.cloud/1/9ceq7yfyjhnozxoio9xx8kywyuydjxk84bbol1e4zwf3ehef/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>#}
     <div class="lesson">
-    <h1>Darab 3 Digit</h1>
-
-                {% include 'editor.html' %}
-{#<div id="savedContent">{{ content | safe }}</div>#}
-{#<textarea id="mytextarea">{{ content }}</textarea>#}
-        <br>
-        <br>
-    <div class="video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/9mp9-I_HB_w?si=DQrzuqVrprWLZxYj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-
-        <div class="comments">
-            <h2>Soalan & Komen</h2>
-            <!-- Anda mungkin menggunakan plugin komen pihak ketiga di sini, atau membangun sistem komen anda sendiri -->
-        </div>
+        <h1 class="center-text">Darab 3 Digit</h1>
+        {% include 'editor.html' %}
     </div>
-{#    <script>#}
-{#tinymce.init({#}
-{#  selector: '#mytextarea',#}
-{#  plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons accordion',#}
-{#  menubar: 'file edit view insert format tools table help',#}
-{#  toolbar: "mySaveButton | undo redo | accordion accordionremove | blocks fontfamily fontsize | bold italic underline strikethrough | align numlist bullist | link image | table media | lineheight outdent indent| forecolor backcolor removeformat | charmap emoticons | code fullscreen preview | save print | pagebreak anchor codesample | ltr rtl ",#}
-{#  height: 800,#}
-{#  width: 800,#}
-{#  setup: function (editor) {#}
-{#    editor.ui.registry.addButton('mySaveButton', {#}
-{#      text: 'Save',#}
-{#     onAction: function () {#}
-{#    var content = tinymce.get('mytextarea').getContent();#}
-{#    // Replace 'content' in the 'savedContent' div#}
-{#    $('#savedContent').html(content);// Send 'content' and page name to server to save#}
-{#    $.ajax({#}
-{#        url: '/save-content',#}
-{#        method: 'POST',#}
-{#        data: { content: content, page: 'darab-3-digit' }#}
-{#    });#}
-{##}
-{#}#}
-{##}
-{##}
-{#    });#}
-{#    editor.on('change', function (e) {#}
-{#        e.preventDefault(); // Prevent the default form submission#}
-{#        editor.save();#}
-{#        var content = editor.getContent(); // Get editor content#}
-{#        // Send 'content' to server to save#}
-{#        $.ajax({#}
-{#            url: '/save-content',#}
-{#            method: 'POST',#}
-{#            data: { content: content }#}
-{#        });#}
-{#    });#}
-{#  }#}
-{#});#}
-{##}
-{#</script>#}
-    {% endblock %}
+{% endblock %}
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}
 
 </body>
+```

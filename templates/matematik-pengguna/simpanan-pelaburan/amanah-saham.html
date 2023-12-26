@@ -1,51 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <style>
-     .center-text {
-        text-align: center;
-    }
-
-        .lesson {
-        width: 80%;
-            font-family: Arial, sans-serif;
-          padding-top: 60px; /* Adjust this value based on the height of your navbar */            /* Adjust these values */
-            margin: auto auto auto 270px; /* Increase the left margin by the width of your sidebar */
-            }
-        .video {
-            text-align: center;
-        }
-        {#.video iframe {#}
-        {#    position: absolute;#}
-        {#    width: 100%;#}
-        {#    height: 100%;#}
-        {#}#}
-        .comments {
-            margin-top: 20px;
-        }
-
-    </style>
-     <head>
-     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lesson.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
     </head>
-<body>
+    <body>
     {% include 'matematik-pengguna/simpanan-pelaburan/sidebar.html' %}
     <div class="lesson">
-    <h1 class="center-text">Darab 2 Digit</h1>
-
-        <div class="video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/9mp9-I_HB_w?si=DQrzuqVrprWLZxYj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-
-        <div class="comments">
-            <h2>Questions & Comments</h2>
-            <!-- You might use a third-party comments plugin here, or build your own comments system -->
-        </div>
+        <h1 class="center-text">Amanah Saham</h1>
+        {% include 'editor.html' %}
     </div>
-    {% endblock %}
+{% endblock %}
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}
 
 </body>

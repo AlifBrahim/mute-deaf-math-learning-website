@@ -117,33 +117,51 @@ def save_content():
 
 @app.route('/darab-2-digit')
 def darab2digit():
-    return render_template('darab/darab-2-digit.html', title='Darab 2 Digit')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='darab-2-digit').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('darab/darab-2-digit.html', title='Darab 2 Digit', content=content, page='darab-2-digit')
 
 
 # Add routes for bahagi pages
 @app.route('/bahagi-2-digit')
 def bahagi2digit():
-    return render_template('bahagi/bahagi-2-digit.html', title='Bahagi 2 Digit')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='bahagi-2-digit').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('bahagi/bahagi-2-digit.html', title='Bahagi 2 Digit', content=content, page='bahagi-2-digit')
 
 
 @app.route('/bahagi-4-digit')
 def bahagi4digit():
-    return render_template('bahagi/bahagi-4-digit.html', title='Bahagi 4 Digit')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='bahagi-4-digit').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('bahagi/bahagi-4-digit.html', title='Bahagi 4 Digit', content=content, page='bahagi-4-digit')
 
 
 @app.route('/bahagi-kehidupan-seharian')
 def bahagiKehidupanSeharian():
-    return render_template('bahagi/bahagi-kehidupan-seharian.html', title='Bahagi Kehidupan Seharian')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='bahagi-kehidupan-seharian').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('bahagi/bahagi-kehidupan-seharian.html', title='Bahagi Kehidupan Seharian', content=content, page='bahagi-kehidupan-seharian')
 
 
 @app.route('/bahagi-masalah')
 def bahagiMasalah():
-    return render_template('bahagi/bahagi-masalah.html', title='Bahagi Masalah')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='bahagi-masalah').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('bahagi/bahagi-masalah.html', title='Bahagi Masalah', content=content, page='bahagi-masalah')
 
 
 @app.route('/bahagi-titik-perpuluhan')
 def bahagiTitikPerpuluhan():
-    return render_template('bahagi/bahagi-titik-perpuluhan.html', title='Bahagi Titik Perpuluhan')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='bahagi-titik-perpuluhan').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('bahagi/bahagi-titik-perpuluhan.html', title='Bahagi Titik Perpuluhan', content=content, page='bahagi-titik-perpuluhan')
 
 
 # Add routes for darab pages
@@ -166,76 +184,119 @@ def darabKehidupanSeharian():
 
 @app.route('/darab-masalah')
 def darabMasalah():
-    return render_template('darab/darab-masalah.html', title='Darab Masalah')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='darab-masalah').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('darab/darab-masalah.html', title='Darab Masalah', content=content, page='darab-masalah')
 
 
 @app.route('/darab-titik-perpuluhan')
 def darabTitikPerpuluhan():
-    return render_template('darab/darab-titik-perpuluhan.html', title='Darab Titik Perpuluhan')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='darab-titik-perpuluhan').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('darab/darab-titik-perpuluhan.html', title='Darab Titik Perpuluhan', content=content, page='darab-titik-perpuluhan')
 
 
 # Add routes for matematik-pengguna/kredit-hutang pages
 @app.route('/matematik-pengguna/kredit-hutang/definisi-kredit-hutang')
 def definisiKreditHutang():
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='definisi-kredit-hutang').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
     return render_template('matematik-pengguna/kredit-hutang/definisi-kredit-hutang.html',
-                           title='Definisi Kredit Hutang')
+                           title='Definisi Kredit Hutang',
+                           content=content, page='definisi-kredit-hutang')
 
 
 @app.route('/matematik-pengguna/kredit-hutang/faedah-atas-baki')
 def faedahAtasBaki():
-    return render_template('matematik-pengguna/kredit-hutang/faedah-atas-baki.html', title='Faedah Atas Baki')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='faedah-atas-baki').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('matematik-pengguna/kredit-hutang/faedah-atas-baki.html', title='Faedah Atas Baki', content=content, page='faedah-atas-baki')
 
 
 @app.route('/matematik-pengguna/kredit-hutang/faedah-sama-rata')
 def faedahSamaRata():
-    return render_template('matematik-pengguna/kredit-hutang/faedah-sama-rata.html', title='Faedah Sama Rata')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='faedah-sama-rata').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('matematik-pengguna/kredit-hutang/faedah-sama-rata.html', title='Faedah Sama Rata', content=content, page='faedah-sama-rata')
 
 
 @app.route('/matematik-pengguna/kredit-hutang/kira-kredit')
 def kiraKredit():
-    return render_template('matematik-pengguna/kredit-hutang/kira-kredit.html', title='Kira Kredit')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='kira-kredit').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('matematik-pengguna/kredit-hutang/kira-kredit.html', title='Kira Kredit', content=content, page='kira-kredit')
 
 
 @app.route('/matematik-pengguna/kredit-hutang/kredit-masalah')
 def kreditMasalah():
-    return render_template('matematik-pengguna/kredit-hutang/kredit-masalah.html', title='Kredit Masalah')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='kredit-masalah').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('matematik-pengguna/kredit-hutang/kredit-masalah.html', title='Kredit Masalah', content=content, page='kredit-masalah')
 
 
 @app.route('/matematik-pengguna/kredit-hutang/pinjaman-masalah')
 def pinjamanMasalah():
-    return render_template('matematik-pengguna/kredit-hutang/pinjaman-masalah.html', title='Pinjaman Masalah')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='pinjaman-masalah').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('matematik-pengguna/kredit-hutang/pinjaman-masalah.html', title='Pinjaman Masalah', content=content, page='pinjaman-masalah')
 
 
 # Add routes for matematik-pengguna/simpanan-pelaburan pages
 @app.route('/matematik-pengguna/simpanan-pelaburan/amanah-saham')
 def amanahSaham():
-    return render_template('matematik-pengguna/simpanan-pelaburan/amanah-saham.html', title='Amanah Saham')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='amanah-saham').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('matematik-pengguna/simpanan-pelaburan/amanah-saham.html', title='Amanah Saham', content=content, page='amanah-saham')
 
 
 @app.route('/matematik-pengguna/simpanan-pelaburan/faedah-kompaun')
 def faedahKompaun():
-    return render_template('matematik-pengguna/simpanan-pelaburan/faedah-kompaun.html', title='Faedah Kompaun')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='faedah-kompaun').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('matematik-pengguna/simpanan-pelaburan/faedah-kompaun.html', title='Faedah Kompaun', content=content, page='faedah-kompaun')
 
 
 @app.route('/matematik-pengguna/simpanan-pelaburan/faedah-mudah')
 def faedahMudah():
-    return render_template('matematik-pengguna/simpanan-pelaburan/faedah-mudah.html', title='Faedah Mudah')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='faedah-mudah').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('matematik-pengguna/simpanan-pelaburan/faedah-mudah.html', title='Faedah Mudah', content=content, page='faedah-mudah')
 
 
 @app.route('/matematik-pengguna/simpanan-pelaburan/roi')
 def roi():
-    return render_template('matematik-pengguna/simpanan-pelaburan/roi.html', title='ROI')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='roi').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('matematik-pengguna/simpanan-pelaburan/roi.html', title='ROI', content=content, page='roi')
 
 
 @app.route('/matematik-pengguna/simpanan-pelaburan/simpanan-dan-pelaburan')
 def simpananDanPelaburan():
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='simpanan-dan-pelaburan').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
     return render_template('matematik-pengguna/simpanan-pelaburan/simpanan-dan-pelaburan.html',
-                           title='Simpanan dan Pelaburan')
+                           title='Simpanan dan Pelaburan', content=content, page='simpanan-dan-pelaburan')
 
 
 @app.route('/matematik-pengguna/simpanan-pelaburan/simpanan-masalah')
 def simpananMasalah():
-    return render_template('matematik-pengguna/simpanan-pelaburan/simpanan-masalah.html', title='Simpanan Masalah')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='simpanan-masalah').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('matematik-pengguna/simpanan-pelaburan/simpanan-masalah.html', title='Simpanan Masalah', content=content, page='simpanan-masalah')
 
 
 if __name__ == '__main__':

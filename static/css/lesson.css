@@ -1,0 +1,14 @@
+ .center-text {
+            text-align: center;
+        }
+
+        .lesson {
+            width: 80%;
+            font-family: Arial, sans-serif;
+            padding-top: 60px; /* Adjust this value based on the height of your navbar */ /* Adjust these values */
+            margin: auto auto auto 270px; /* Increase the left margin by the width of your sidebar */
+        }
+
+        .video {
+            text-align: center;
+        }

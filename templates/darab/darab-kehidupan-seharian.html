@@ -1,42 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <style>
-     .center-text {
-        text-align: center;
-    }
-
-        .lesson {
-        width: 70%;
-            font-family: Arial, sans-serif;
-          padding-top: 60px; /* Adjust this value based on the height of your navbar */            /* Adjust these values */
-            margin: auto auto auto 270px; /* Increase the left margin by the width of your sidebar */
-            }
-        .video {
-            text-align: center;
-        }
-                .comments {
-            margin-top: 20px;
-        }
-
-    </style>
-     <head>
-     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lesson.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
     </head>
-
-<body>
+    <body>
     {% include 'darab/sidebar.html' %}
-
     <div class="lesson">
-    <h1>Darab 3 Digit</h1>
-                        {% include 'editor.html' %}
-
+        <h1 class="center-text">Darab dalam Kehidupan Seharian</h1>
+        {% include 'editor.html' %}
     </div>
-
-    {% endblock %}
+{% endblock %}
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}
 
 </body>
+```

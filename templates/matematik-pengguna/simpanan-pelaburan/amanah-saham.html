@@ -30,26 +30,7 @@
      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
     </head>
 <body>
-<div class="sidebar" >
-  <div class="active">
-    <span>Simpanan dan Pelaburan</span>
-  </div>
-  <div>
-    <span>Faedah Mudah</span>
-  </div>
-  <div>
-    <span>Faedah Kompaun</span>
-  </div>
-  <div>
-    <span>Nilai Pemulangan Pelaburan (ROI)</span>
-  </div>
-  <div>
-    <span>Amanah Saham</span>
-  </div>
-  <div>
-    <span>Penyelesaian Masalah Simpanan</span>
-  </div>
-</div>
+    {% include 'matematik-pengguna/simpanan-pelaburan/sidebar.html' %}
     <div class="lesson">
     <h1 class="center-text">Darab 2 Digit</h1>
 

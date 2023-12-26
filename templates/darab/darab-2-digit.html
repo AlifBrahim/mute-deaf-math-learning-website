@@ -25,23 +25,8 @@
      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
     </head>
 <body>
-<div class="sidebar" >
-  <div class="active">
-    <span>Darab 2 Digit</span>
-  </div>
-  <div>
-    <span>Darab 3 Digit</span>
-  </div>
-  <div>
-    <span>Darab dengan Titik Perpuluhan</span>
-  </div>
-  <div>
-    <span>Darab dalam Kehidupan Seharian</span>
-  </div>
-  <div>
-    <span>Darab dalam Kehidupan Seharian</span>
-  </div>
-</div>
+    {% include 'darab/darab-sidebar.html' %}
+
     <div class="lesson">
     <h1>Darab 2 Digit</h1>
 <p>Pelan Pembelajaran ini mengenai pengenalan kepada cara untuk menggunakan darab dua digit. Pelajar akan menggunakan pemahaman mereka mengenai nilai tempat dan darab satu digit untuk memulakan darab dua digit.</p>

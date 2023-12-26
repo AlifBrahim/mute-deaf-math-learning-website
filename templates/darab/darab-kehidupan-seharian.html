@@ -8,7 +8,7 @@
     }
 
         .lesson {
-        width: 80%;
+        width: 70%;
             font-family: Arial, sans-serif;
           padding-top: 60px; /* Adjust this value based on the height of your navbar */            /* Adjust these values */
             margin: auto auto auto 270px; /* Increase the left margin by the width of your sidebar */
@@ -16,12 +16,7 @@
         .video {
             text-align: center;
         }
-        {#.video iframe {#}
-        {#    position: absolute;#}
-        {#    width: 100%;#}
-        {#    height: 100%;#}
-        {#}#}
-        .comments {
+                .comments {
             margin-top: 20px;
         }
 
@@ -29,6 +24,7 @@
      <head>
      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
     </head>
+
 <body>
 <div class="sidebar" >
   <div class="active">
@@ -47,22 +43,16 @@
     <span>Darab dalam Kehidupan Seharian</span>
   </div>
 </div>
+     <script src="https://cdn.tiny.cloud/1/9ceq7yfyjhnozxoio9xx8kywyuydjxk84bbol1e4zwf3ehef/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <div class="lesson">
-    <h1 class="center-text">Darab 2 Digit</h1>
+    <h1>Darab 3 Digit</h1>
+                        {% include 'editor.html' %}
 
-        <div class="video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/9mp9-I_HB_w?si=DQrzuqVrprWLZxYj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-
-        <div class="comments">
-            <h2>Questions & Comments</h2>
-            <!-- You might use a third-party comments plugin here, or build your own comments system -->
-        </div>
     </div>
+
     {% endblock %}
 {% block scripts %}
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}
 
 </body>
-```

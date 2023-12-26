@@ -1,0 +1,58 @@
+<div id="savedContent">{{ content | safe }}</div>
+<textarea id="mytextarea">{{ content }}</textarea>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.tiny.cloud/1/9ceq7yfyjhnozxoio9xx8kywyuydjxk84bbol1e4zwf3ehef/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+tinymce.init({
+  selector: '#mytextarea',
+  plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons accordion',
+  menubar: 'file edit view insert format tools table help',
+  toolbar: "mySaveButton | undo redo | accordion accordionremove | blocks fontfamily fontsize | bold italic underline strikethrough | align numlist bullist | link image | table media | lineheight outdent indent| forecolor backcolor removeformat | charmap emoticons | code fullscreen preview | save print | pagebreak anchor codesample | ltr rtl ",
+  height: 800,
+  width: 800,
+  setup: function (editor) {
+    editor.ui.registry.addButton('mySaveButton', {
+      text: 'Save',
+     onAction: function () {
+    var content = tinymce.get('mytextarea').getContent();
+    // Replace 'content' in the 'savedContent' div
+    $('#savedContent').html(content);
+       // Send 'content' and page name to server to save
+    $.ajax({
+    url: '/save-content',
+    method: 'POST',
+    data: { content: content, page: '{{ page }}' },
+    success: function(response) {
+        console.log('Success:', response);
+    },
+    error: function(error) {
+        console.log('Error:', error);
+    }
+});
+
+
+}
+
+
+    });
+    editor.on('change', function (e) {
+        e.preventDefault(); // Prevent the default form submission
+        editor.save();
+        var content = editor.getContent(); // Get editor content
+        // Send 'content' to server to save
+       $.ajax({
+    url: '/save-content',
+    method: 'POST',
+    data: { content: content, page: '{{ page }}' },
+    success: function(response) {
+        console.log('Success:', response);
+    },
+    error: function(error) {
+        console.log('Error:', error);
+    }
+});
+
+    });
+  }
+});
+</script>

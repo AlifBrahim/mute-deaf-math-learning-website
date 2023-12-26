@@ -1,19 +1,19 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, jsonify
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import pymysql
+
 pymysql.install_as_MySQLdb()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8b4fTgOZ9fRpv6F0TP970kdE8XJvF0Ly'
 
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://doadmin:AVNS_7KPMC3xu3yCp_jz_WfT@uumevents-do-user-14295301-0.b.db.ondigitalocean.com:25060/mathgenius'
+app.config[
+    'SQLALCHEMY_DATABASE_URI'] = 'mysql://doadmin:AVNS_7KPMC3xu3yCp_jz_WfT@uumevents-do-user-14295301-0.b.db.ondigitalocean.com:25060/mathgenius'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -32,8 +32,6 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-
-
 
 
 @login_manager.user_loader
@@ -68,6 +66,7 @@ def create_account():
         return redirect(url_for('profile'))
     return render_template('create-account.html', title='Create Account')
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -83,19 +82,37 @@ def login():
     return render_template('login.html', title='Login', error=error)
 
 
-
-
-
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('login'))
 
+
 @app.route('/profile')
 @login_required
 def profile():
     return render_template('profile.html', title='Profile')
+
+
+class Content(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    page = db.Column(db.String(255))
+    content = db.Column(db.Text(length=4294967295))
+
+
+@app.route('/save-content', methods=['POST'])
+def save_content():
+    print("save_content")
+    content = request.form['content']
+    page = request.form['page']
+    # Create a new instance of the Content class
+    content_instance = Content(content=content, page=page)
+    # Add the new content to the database
+    db.session.add(content_instance)
+    db.session.commit()
+    return jsonify(success=True)
+
 
 
 @app.route('/darab-2-digit')
@@ -132,12 +149,19 @@ def bahagiTitikPerpuluhan():
 # Add routes for darab pages
 @app.route('/darab-3-digit')
 def darab3digit():
-    return render_template('darab/darab-3-digit.html', title='Darab 3 Digit')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='darab-3-digit').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('darab/darab-3-digit.html', title='Darab 3 Digit', content=content, page='darab-3-digit')
+
 
 
 @app.route('/darab-kehidupan-seharian')
 def darabKehidupanSeharian():
-    return render_template('darab/darab-kehidupan-seharian.html', title='Darab Kehidupan Seharian')
+    # Get the last saved content from the database
+    content_instance = Content.query.filter_by(page='darab-kehidupan-seharian').order_by(Content.id.desc()).first()
+    content = content_instance.content if content_instance else ''
+    return render_template('darab/darab-kehidupan-seharian.html', title='Darab Kehidupan Seharian', content=content, page='darab-kehidupan-seharian')
 
 
 @app.route('/darab-masalah')

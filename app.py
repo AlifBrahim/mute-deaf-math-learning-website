@@ -298,6 +298,13 @@ def simpananMasalah():
     content = content_instance.content if content_instance else ''
     return render_template('matematik-pengguna/simpanan-pelaburan/simpanan-masalah.html', title='Simpanan Masalah', content=content, page='simpanan-masalah')
 
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html')
+
+@app.route('/game-darab')
+def gameDarab():
+    return render_template('darab/game-darab.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)

@@ -61,11 +61,12 @@
 <div class="sidebar">
   <div onclick="toggleTopics(this)">
     <span>Darab<span class="arrow">▼</span></span>
+          <span class="topic"><a href="/pengenalan-darab">Pengenalan Darab</a></span>
     <span class="topic"><a href="/darab-2-digit">Darab 2 Digit</a></span>
-    <span class="topic"><a href="/darab-3-digit">Darab 3 Digit</a></span>
+{#    <span class="topic"><a href="/darab-3-digit">Darab 3 Digit</a></span>#}
     <span class="topic"><a href="/darab-titik-perpuluhan">Darab dengan Titik Perpuluhan</a></span>
-    <span class="topic"><a href="/darab-kehidupan-seharian">Darab dalam Kehidupan Seharian</a></span>
-    <span class="topic"><a href="/darab-masalah">Penyelesaian Masalah</a></span>
+{#    <span class="topic"><a href="/darab-kehidupan-seharian">Darab dalam Kehidupan Seharian</a></span>#}
+{#    <span class="topic"><a href="/darab-masalah">Penyelesaian Masalah</a></span>#}
   </div>
   <div onclick="toggleTopics(this)">
     <span>Bahagi<span class="arrow">▼</span></span>
@@ -97,22 +98,25 @@
 
 
 <div class="curriculum">
-    <h1>Math</h1>
-    <p>Not feeling ready for this? Check out <a href="#">Get ready for 3rd grade</a>.</p>
-    <h2>3rd grade</h2>
-    <p>Course mastery: 6%</p>
-    <p>880 / 14,100 mastery points</p>
 
+ {% if current_user.is_authenticated %}
+    <button type="button" class="btn btn-primary">
+        Your Mastery Points <span class="badge badge-secondary">{{ current_user.mastery_points }}</span>
+    </button>
+    {% endif %}
+    <br>
+    <br>
      <!-- Apply the new CSS class to the divs -->
     <div class="unit _12yy6f6l">
         <h3>Darab</h3>
         <p>0/1200 Mastery points</p>
         <ul>
+             <li><a href="/pengenalan-darab">Pengenalan Darab</a></li>
  <li><a href="/darab-2-digit">Darab Cara Standard (2 Digit)</a></li>
-            <li><a href="/darab-3-digit">Darab Cara Standard (3 Digit)</a></li>
+{#            <li><a href="/darab-3-digit">Darab Cara Standard (3 Digit)</a></li>#}
             <li><a href="/darab-titik-perpuluhan">Darab dengan Titik Perpuluhan</a></li>
-            <li><a href="/darab-kehidupan-seharian">Darab dalam Kehidupan Seharian</a></li>
-            <li><a href="/darab-masalah">Penyelesaian Masalah</a> </li>
+{#            <li><a href="/darab-kehidupan-seharian">Darab dalam Kehidupan Seharian</a></li>#}
+{#            <li><a href="/darab-masalah">Penyelesaian Masalah</a> </li>#}
             <li><a href="/quiz">Quiz</a> </li>
             <li><a href="/game-darab">Play Game</a></li>
         </ul>

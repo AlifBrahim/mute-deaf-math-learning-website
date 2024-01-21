@@ -26,6 +26,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(512))
     fullname = db.Column(db.String(256))  # Add this line
+    mastery_points = db.Column(db.Integer, default=0)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -114,13 +115,18 @@ def save_content():
     return jsonify(success=True)
 
 
-
-@app.route('/darab-2-digit')
+@app.route('/darab-2-digit', methods=['GET', 'POST'])
+@login_required
 def darab2digit():
-    # Get the last saved content from the database
-    content_instance = Content.query.filter_by(page='darab-2-digit').order_by(Content.id.desc()).first()
-    content = content_instance.content if content_instance else ''
-    return render_template('darab/darab-2-digit.html', title='Darab 2 Digit', content=content, page='darab-2-digit')
+   if request.method == 'POST':
+       current_user.mastery_points += 5
+       db.session.commit()
+       # Redirect to the next page after updating the points
+       return jsonify(success=True, next_url=url_for('darab3digit'))
+   # Get the last saved content from the database
+   content_instance = Content.query.filter_by(page='darab-2-digit').order_by(Content.id.desc()).first()
+   content = content_instance.content if content_instance else ''
+   return render_template('darab/darab-2-digit.html', title='Darab 2 Digit', content=content)
 
 
 # Add routes for bahagi pages
@@ -305,6 +311,10 @@ def quiz():
 @app.route('/game-darab')
 def gameDarab():
     return render_template('darab/game-darab.html')
+
+@app.route('/pengenalan-darab')
+def pengenalanDarab():
+    return render_template('darab/multiplication.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)

@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+  .separator {
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    margin: 20px 0;
+}
+      .cupcakes-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .cupcake {
+        width: 100px;
+        height: auto;
+        border-radius: 5px;
+        margin: 5px;
+    }
+        .image-container {
+            width: 70%; /* Adjust the width of the container */
+            margin: auto; /* Center the container */
+        }
+
+        .image-container img {
+            width: 30%; /* Adjust the width of each image */
+            height: auto;
+            margin: 5px; /* Add some margin between images */
+        }
+        .lesson {
+        width: 80%;
+            font-family: Arial, sans-serif;
+          padding-top: 60px; /* Adjust this value based on the height of your navbar */            /* Adjust these values */
+            margin: auto auto auto 270px; /* Increase the left margin by the width of your sidebar */
+            }
+        .video {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* for 16:9 aspect ratio */
+            position: relative;
+        }
+        .video iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .comments {
+            margin-top: 20px;
+        }
+</style>
+<script>
+    // JavaScript for fade-in effect
+    document.addEventListener('DOMContentLoaded', function() {
+        const lesson = document.querySelector('.lesson');
+        lesson.style.transition = 'opacity 1s ease-in-out';
+        lesson.style.opacity = '1';
+    });
+</script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
+</head>
+<body>
+
+<div class="sidebar" >
+  <div class="active">
+    <span>Equal groups</span>
+  </div>
+  <div>
+    <span>Equal groups (Not started)</span>
+  </div>
+  <div>
+    <span>Introduction to multiplication</span>
+  </div>
+  <div>
+    <span>Understand equal groups as multiplication (Not started)</span>
+  </div>
+  <div>
+    <span>Multiplication as repeated addition</span>
+  </div>
+  <div>
+    <span>Relate repeated addition to multiplication (Not started)</span>
+  </div>
+</div>
+
+    <div class="lesson">
+    <h1>Gambaran Pembahagian: 4 ÷ 2</h1>
+
+    <p>
+        Mari lihat pembahagian <strong>4 ÷ 2</strong> kek cawan:
+    </p>
+
+    <!-- Displaying the images of cupcakes -->
+    <div class="cupcakes-container">
+        <img src="../static/images/cupcake.png" alt="Cupcake" class="cupcake">
+        <img src="../static/images/cupcake.png" alt="Cupcake" class="cupcake">
+        <img src="../static/images/cupcake.png" alt="Cupcake" class="cupcake">
+        <img src="../static/images/cupcake.png" alt="Cupcake" class="cupcake">
+    </div>
+
+    <!-- Separator line -->
+    <div class="separator"></div>
+
+    <!-- Displaying the images of cupcakes on the left side -->
+    <div class="cupcakes-container">
+        <img src="../static/images/cupcake.png" alt="Cupcake" class="cupcake">
+        <img src="../static/images/cupcake.png" alt="Cupcake" class="cupcake">
+    </div>
+
+    <!-- Displaying the images of cupcakes on the right side -->
+    <div class="cupcakes-container">
+        <img src="../static/images/cupcake.png" alt="Cupcake" class="cupcake">
+        <img src="../static/images/cupcake.png" alt="Cupcake" class="cupcake">
+    </div>
+
+    <p>
+        Jadi, <strong>4 ÷ 2</strong> sama dengan <strong>2</strong>.
+    </p>
+    </div>
+
+
+
+    <div class="lesson">
+        <h1>Pembahagian</h1>
+
+        <div class="video">
+            <!-- Replace 'VIDEO_ID' with your YouTube video's ID -->
+            <iframe src="https://www.youtube.com/embed/Uh8icbAu2Do?si=rD2nrPRzNfmxuFJh" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="comments">
+            <h2>Perbincangan</h2>
+            <!-- You might use a third-party comments plugin here, or build your own comments system -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}
+
+</body>
+</html>

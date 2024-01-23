@@ -316,5 +316,9 @@ def gameDarab():
 def pengenalanDarab():
     return render_template('darab/multiplication.html')
 
+@app.route('/pengenalan-bahagi')
+def pengenalanBahagi():
+    return render_template('bahagi/division.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)

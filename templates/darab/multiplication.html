@@ -2,64 +2,13 @@
 
 {% block content %}
 
-    <style>
-
-        .image-container {
-            width: 70%; /* Adjust the width of the container */
-            margin: auto; /* Center the container */
-        }
-
-        .image-container img {
-            width: 30%; /* Adjust the width of each image */
-            height: auto;
-            margin: 5px; /* Add some margin between images */
-        }
-        .lesson {
-        width: 80%;
-            font-family: Arial, sans-serif;
-          padding-top: 60px; /* Adjust this value based on the height of your navbar */            /* Adjust these values */
-            margin: auto auto auto 270px; /* Increase the left margin by the width of your sidebar */
-            }
-        .video {
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* for 16:9 aspect ratio */
-            position: relative;
-        }
-        .video iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        .comments {
-            margin-top: 20px;
-        }
-
-    </style>
-     <head>
-     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
+   <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lesson.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
     </head>
+    <body>
+    {% include 'darab/sidebar.html' %}
 <body>
-<div class="sidebar" >
-  <div class="active">
-    <span>Equal groups</span>
-  </div>
-  <div>
-    <span>Equal groups (Not started)</span>
-  </div>
-  <div>
-    <span>Introduction to multiplication</span>
-  </div>
-  <div>
-    <span>Understand equal groups as multiplication (Not started)</span>
-  </div>
-  <div>
-    <span>Multiplication as repeated addition</span>
-  </div>
-  <div>
-    <span>Relate repeated addition to multiplication (Not started)</span>
-  </div>
-</div>
 
     <div class="lesson">
     <h1>Gambaran Contoh: 2 x 3 = 6</h1>
